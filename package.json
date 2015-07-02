@@ -1,6 +1,6 @@
 {
   "name": "node-sql-db",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A wrapper around various NodeJS database drivers that provides a simple, consistent, low friction usage pattern and schema migration features.",
   "main": "sql-db.js",
   "scripts": {
