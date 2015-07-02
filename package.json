@@ -27,11 +27,11 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/ronglasmann/node-sql-db.git"
   },
   "bugs": {
-    "url": ""
+    "url": "https://github.com/ronglasmann/node-sql-db/issues"
   },
   "license": "MIT",
-  "homepage": ""
+  "homepage": "https://github.com/ronglasmann/node-sql-db"
 }
