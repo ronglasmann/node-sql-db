@@ -1,6 +1,6 @@
 # node-sql-db
 
-A wrapper around various NodeJS database drivers that provides a simple ans consistent api for database structure maintenance and usage. **Please note** this initial release provides support for SQLite databases.  Support for additional platforms is coming soon.
+A wrapper around various NodeJS database drivers that provides a simple and consistent api for database structure maintenance and usage. **Please note** this initial release provides support for SQLite databases.  Support for additional platforms is coming soon.
 
 ## Design and inspiration
 
