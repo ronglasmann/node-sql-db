@@ -1,4 +1,4 @@
-# LiteSQL
+# node-sql-db
 
 A wrapper around various NodeJS database drivers that provides a simple, consistent, low friction usage pattern and schema migration features.
 
@@ -6,7 +6,7 @@ A wrapper around various NodeJS database drivers that provides a simple, consist
 
 Release management of database structure alongside related applications can become challenging as applications evolve throughout their lifetimes.  Traditionally this is accomplished through manually applied databases changes and/or SQL DDL scripts that are executed in a coordinated manner with application releases.  As systems grow in complexity this approach can become difficult to maintain and error-prone.
 
-LiteSQL allows application code to be responsible for managing the state of database structures it depends upon.  When a database connection is obtained through LiteSQL the library evaluates the version of one or more "named schemas" in the database and executes DDL and/or DML as needed to bring them in sync with the state expected by the application.  The database connection is only returned to the caller after any needed database updatesare applied.
+node-sql-db allows application code to be responsible for managing the state of database structures it depends upon.  When a database connection is obtained through node-sql-db the library evaluates the version of one or more "named schemas" in the database and executes DDL and/or DML as needed to bring them in sync with the state expected by the application.  The database connection is only returned to the caller after any needed database updates are applied.
 
 **Features:**
 
@@ -16,18 +16,18 @@ LiteSQL allows application code to be responsible for managing the state of data
  
 ## Installation
 
-    npm install litesql -save
+    npm install node-sql-db -save
 
 ## Usage
 
-LiteSQL.Db(..) takes a Javascript object that provides **database definition** that LiteSQL will use to establish the database connection and do schema migration.  Once LiteSQL.Db(..) returns the caller is guaranteed that any needed database updates have completed and the connection is ready to use.
+node-sql-db.Db(..) takes a Javascript object that provides **database definition** that node-sql-db will use to establish the database connection and do schema migration.  Once node-sql-db.Db(..) returns the caller is guaranteed that any needed database updates have completed and the connection is ready to use.
 
 A database definition object is structured like this:
 
     {
         file:         "" - SQLite file on disk, full path and filename, required for SQLite 
                            databases
-        versionTable: "" - Table name used by LiteSQL to maintain schema versions, optional
+        versionTable: "" - Table name used to maintain schema versions, optional
         schema:       [] - Array of schema objects that define database structure and seed 
                            data, optional
     }
@@ -42,8 +42,8 @@ A schema object is structured like this:
 
 ### Examples
 
-    var LiteSQL = require("litesql");
-    var db = new LiteSQL.Db({
+    var SQL = require("node-sql-db");
+    var db = new SQL.Db({
         file: "./test.sqlite",
         schema: [{
             name: "test",
@@ -65,7 +65,7 @@ A schema object is structured like this:
 
 ## License
 
-LiteSQL is released under the MIT License (MIT)
+node-sql-db is released under the MIT License (MIT)
 
 Copyright (c) 2015 Ron Glasmann
 

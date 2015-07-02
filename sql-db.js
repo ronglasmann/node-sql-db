@@ -5,7 +5,7 @@ var async = require("async");
 // definition is structured like this:
 // {
 // 	file:         "" - SQLite file on disk, full path and filename, required
-//	versionTable: "" - Table name used by LiteSQL to maintain schema versions, optional
+//	versionTable: "" - Table name used to maintain schema versions, optional
 //  schema:       [] - Array of schema objects that define database structure and seed data, optional
 // }
 //
@@ -32,7 +32,7 @@ function Db(definition) {
 		}
 	}
 
-	if (!definition.versionTable) definition.versionTable = "litesql_version";
+	if (!definition.versionTable) definition.versionTable = "sqldb_version";
 
 	var sdb = new sqlite3.Database(definition.file);
 	sdb.on("trace", function(sql) {

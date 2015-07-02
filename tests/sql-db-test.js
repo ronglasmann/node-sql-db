@@ -5,7 +5,7 @@
 var async = require("async");
 var fs = require("fs");
 
-exports.testLiteSQL = {
+exports.testSQLDb = {
     "test database creation and initialization": function(test) {
 
         var testDbFile = "./test.sqlite";
@@ -13,10 +13,10 @@ exports.testLiteSQL = {
             fs.unlinkSync(testDbFile);
         }
 
-        var LiteSQL = require("../sql-db.js");
+        var SQL = require("../sql-db.js");
 
         test.doesNotThrow(function () {
-            var db = new LiteSQL.Db({
+            var db = new SQL.Db({
                 file: testDbFile,
                 schema: [
                     {
