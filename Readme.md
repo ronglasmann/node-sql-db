@@ -1,6 +1,6 @@
 # node-sql-db
 
-A wrapper around various NodeJS database drivers that provides a simple, consistent, low friction usage pattern and schema migration features.
+A wrapper around various NodeJS database drivers that provides a simple, consistent, low friction usage pattern and schema migration features. **Please note** this initial release provides support for SQLite databases.  Support for additional platforms is coming soon.
 
 ## Design and inspiration
 
