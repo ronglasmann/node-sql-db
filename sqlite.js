@@ -20,6 +20,8 @@ Connection.prototype.execute = function () {
         this._sqldb.run(arguments[0]);
     } else if (arguments.length < 3) {
         this._sqldb.run(arguments[0], arguments[1]);
+    } else if (arguments.length < 4) {
+        this._sqldb.run(arguments[0], arguments[1], arguments[2]);
     } else {
         var params = [];
         for (var i = 1; i < arguments.length - 1; i++) {
@@ -36,6 +38,8 @@ Connection.prototype.query = function () {
         this._sqldb.all(arguments[0]);
     } else if (arguments.length < 3) {
         this._sqldb.all(arguments[0], arguments[1]);
+    } else if (arguments.length < 4) {
+        this._sqldb.all(arguments[0], arguments[1], arguments[2]);
     } else {
         var params = [];
         for (var i = 1; i < arguments.length - 1; i++) {
