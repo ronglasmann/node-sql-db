@@ -8,8 +8,11 @@ Release management of database structure alongside related applications can beco
 
 node-sql-db allows application code to be responsible for managing the state of database structures it depends upon.  When a database connection is obtained through node-sql-db the library automatically evaluates the version of one or more "named schemas" in the database and executes DDL and/or DML as needed to bring them in sync with the state expected by the application.  The database connection is only returned to the caller after any necessary database updates are applied.
 
+node-sql-db allows for very fast prototyping and development of applications supported by a rdms backend.  Initial code can be assembled quickly (maybe even using only an in-memory SQLite DB) and then seamlessly and rapidly evolved into production code.  If the application grows beyond a file-based db, transitioning to a server based database involves only minor code changes (or maybe even none at all). 
+
 **Features:**
 
+ * Rapid prototyping and development of database supported applications
  * Management of database structure within related application code 
  * SQLite databases supported via require("sqlite3")
  * MySQL databases supported via require("mysql")
