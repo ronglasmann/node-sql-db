@@ -1,6 +1,6 @@
 {
   "name": "node-sql-db",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "Simple, consistent, low friction RDMS usage patterns with schema migration support.",
   "main": "sql-db.js",
   "scripts": {
