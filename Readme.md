@@ -47,9 +47,11 @@ A schema object is structured like this:
 
 ### Examples
 
+SQLite with multiple schemas:
+
     var SQL = require("node-sql-db");
     var db = new SQL.Db({
-        file: "./test.sqlite",
+        platform: "SQLite",
         schema: [{
             name: "test",
             sql: ["create table if not exists test1 (id integer primary key, test1 text)",
@@ -61,11 +63,38 @@ A schema object is structured like this:
         }]
     });
     
-    db.serialize(function() {
-        db.run("delete from test1");
-        db.run("insert into test1 (id, test1) values (0, 'testing')");
+    db.execute("delete from test1");
+    db.execute("insert into test1 (id, test1) values (0, 'testing')");
+
+    db.query("select * from test1 where id=0", function(err, rows) {
+        console.log(rows);
+    });
+
+    db.close();
+
+MySQL with only one schema:
+
+    var SQL = require("node-sql-db");
+    var db = new SQL.Db({
+        platform: "MySQL",
+        host:     "localhost",
+        user:     "mysql_user",
+        password: "mysql_pwd",
+        database: "test_db",
+        schema: [{
+            name: "test",
+            sql: ["create table if not exists test1 (id integer primary key, test1 text)",
+                  "create table if not exists test2 (id integer primary key, test2 text)"]
+        }]
     });
     
+    db.execute("delete from test1");
+    db.execute("insert into test1 (id, test1) values (0, 'testing')");
+
+    db.query("select * from test1 where id=0", function(err, rows) {
+        console.log(rows);
+    });
+
     db.close();
 
 ## License
