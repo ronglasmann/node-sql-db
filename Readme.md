@@ -1,17 +1,18 @@
 # node-sql-db
 
-A wrapper around various NodeJS database drivers that provides a simple and consistent api for database structure maintenance and usage. **Please note** this initial release provides support for SQLite databases.  Support for additional platforms is coming soon.
+A wrapper around multiple NodeJS database drivers providing a simple and consistent api for relational database interaction and maintenance of database structures. **Please note:** this release provides support for SQLite and MySQL databases.  Support for additional platforms is coming soon.
 
 ## Design and inspiration
 
-Release management of database structure alongside related applications can become challenging as applications evolve throughout their lifetimes.  Traditionally this is accomplished through manually applied databases changes and/or SQL DDL scripts that are executed in a coordinated manner with application releases.  As systems grow in complexity this approach can become difficult to maintain and error-prone.
+Release management of database structure alongside related applications can become challenging as applications evolve throughout their lifetimes.  Traditionally this is accomplished through manually applied databases changes and/or SQL DDL scripts that are executed in a coordinated manner with application releases.  As systems grow in complexity this approach can become difficult to sustain and error-prone.
 
-node-sql-db allows application code to be responsible for managing the state of database structures it depends upon.  When a database connection is obtained through node-sql-db the library evaluates the version of one or more "named schemas" in the database and executes DDL and/or DML as needed to bring them in sync with the state expected by the application.  The database connection is only returned to the caller after any needed database updates are applied.
+node-sql-db allows application code to be responsible for managing the state of database structures it depends upon.  When a database connection is obtained through node-sql-db the library automatically evaluates the version of one or more "named schemas" in the database and executes DDL and/or DML as needed to bring them in sync with the state expected by the application.  The database connection is only returned to the caller after any necessary database updates are applied.
 
 **Features:**
 
  * Management of database structure within related application code 
- * SQLite databases supported via sqlite3 integration
+ * SQLite databases supported via require("sqlite3")
+ * MySQL databases supported via require("mysql")
  * Simple and consistent usage pattern
  
 ## Installation
@@ -25,8 +26,12 @@ node-sql-db.Db(..) takes a Javascript object that provides **database definition
 A database definition object is structured like this:
 
     {
-        file:         "" - SQLite file on disk, full path and filename, required for SQLite 
-                           databases
+        platform:     "" - Either SQLite or MySQL, defaults to SQLite
+        file:         "" - SQLite file on disk, full path and filename
+        host:         "" - MySQL server host
+        user:         "" - MySQL authorized username
+        password:     "" - MySQL authorized user password
+        database:     "" - MySQL database name
         versionTable: "" - Table name used to maintain schema versions, optional
         schema:       [] - Array of schema objects that define database structure and seed 
                            data, optional

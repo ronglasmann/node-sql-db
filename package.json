@@ -1,7 +1,7 @@
 {
   "name": "node-sql-db",
   "version": "1.0.4",
-  "description": "Simple, consistent, low friction RDMS usage patterns. Schema migrations.",
+  "description": "Simple, consistent, low friction RDMS usage patterns with schema migration support.",
   "main": "sql-db.js",
   "scripts": {
     "test": "nodeunit tests"
@@ -9,6 +9,7 @@
   "keywords": [
     "sqlite",
     "sqlite3",
+    "mysql",
     "database",
     "migration",
     "sql"
@@ -20,6 +21,7 @@
   "dependencies": {
     "async": "^1.3.0",
     "deasync": "^0.1.0",
+    "mysql": "^2.7.0",
     "sqlite3": "^3.0.8"
   },
   "engines": {
