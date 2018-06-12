@@ -1,5 +1,23 @@
 # node-sql-db
 
+This project is forked from https://github.com/ronglasmann/node-sql-db
+
+It contains a new function "insert" that allows you to retrieve the last inserted id in a table, no mather which database type is connected.
+
+Usage:
+<code>db.insert('query',params,callback);</code>
+
+Sample:
+<code>
+ db.insert("insert into ...",[],function(){
+            if (db.errLastInsertId)
+              alert('Error: '+db.errLastInsertId);
+            else
+              alert('Saved to database with id '+db.lastInsertedId);
+          });
+</code>
+
+
 A wrapper around multiple NodeJS database drivers providing a simple and consistent api for relational database interaction and maintenance of database structures. **Please note:** this release provides support for SQLite and MySQL databases.  Support for additional platforms is coming soon.
 
 ## Design and inspiration
