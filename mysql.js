@@ -24,6 +24,17 @@ function Connection(host, user, password, database) {
     this._conn = connection;
 }
 
+Connection.prototype.insert = function (sql,params,callback) {
+    that=this;
+    this._conn.query(sql,params,(function(err,result){
+        if (err)
+            that.errLastInsertId=err;
+        else
+            that.lastInsertedId=result.insertId;
+        callback();
+    }));
+};
+
 Connection.prototype.execute = function () {
     console.log(arguments);
     if (arguments.length < 1) {
