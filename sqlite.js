@@ -13,6 +13,18 @@ function Connection(file) {
     this._sqldb = sdb;
 }
 
+Connection.prototype.insert = function (sql,params,callback) {
+    that=this;
+    this._sqldb.run(sql,params,(function(err){
+        if (err)
+            that.errLastInsertId=err;
+        else
+            that.lastInsertedId=this.lastID;
+        callback();
+    }));
+};
+
+
 Connection.prototype.execute = function () {
     if (arguments.length < 1) {
         throw new Error("execute(..) requires at least one argument");
